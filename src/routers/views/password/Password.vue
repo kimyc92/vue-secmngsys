@@ -23,7 +23,6 @@
 						id="number"
 						type="text"
 						class="input-group form-control"
-						@input="userRegNo"
 						v-model="userInfo.userId"
 						v-bind:disabled="isSmsSends"
 					/>
