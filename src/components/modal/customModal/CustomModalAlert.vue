@@ -1,38 +1,44 @@
 <template>
-	<div>
-		<div
-			class="modal show black-bg customClose"
-			id="myModal"
-			@click="closeModal"
-			tabindex="-1"
-			role="dialog"
-		>
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="myModalLabel">
-							{{ modalValue.title }}
-						</h5>
-						<button
-							type="button"
-							class="btn-close customClose"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
+	<div
+		class="modal show black-bg customClose"
+		id="myModal"
+		@click="closeModal"
+		tabindex="-1"
+		role="dialog"
+	>
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="myModalLabel">
+						{{ modalValue.title }}
+					</h5>
+					<button
+						type="button"
+						class="btn-close customClose"
+						data-bs-dismiss="modal"
+						aria-label="Close"
+					></button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<p>{{ modalValue.content }}</p>
+							</div>
+						</div>
 					</div>
-					<div class="modal-body">{{ modalValue.content }}</div>
-					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-secondary customClose"
-							data-bs-dismiss="modal"
-						>
-							닫기
-						</button>
-						<!--
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary customClose"
+						data-bs-dismiss="modal"
+					>
+						닫기
+					</button>
+					<!--
             <button type="button" class="btn btn-primary">Save changes</button>
             -->
-					</div>
 				</div>
 			</div>
 		</div>
@@ -49,8 +55,6 @@ export default defineComponent({
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const closeModal = (e: any): boolean => {
 			//  DOMEvent<HTMLElement>
-			console.log('hi');
-
 			if (e.target.classList.contains('customClose')) {
 				//customModal.appModal.hide();
 				modalAlertInit(false);
@@ -71,11 +75,11 @@ export default defineComponent({
     );
     */
 		onUnmounted((): void => {
-			console.log('onUnmounted');
+			//console.log('onUnmounted');
 		});
 
 		onDeactivated((): void => {
-			console.log('onDeactivated');
+			//console.log('onDeactivated');
 		});
 		return { modalValue, closeModal };
 	},
@@ -83,6 +87,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.modal-body p {
+	word-wrap: break-word;
+}
 /* Override default value of 'none' */
 .modal {
 	display: block;

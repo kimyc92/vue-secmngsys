@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "local": "vue-cli-service serve --mode local",
-    "dev": "vue-cli-service serve --mode development",
-    "prd": "vue-cli-service serve --mode production"
+    "local": "vue-cli-service serve --port 3000 --mode local",
+    "dev": "vue-cli-service serve --port 3000 --mode development",
+    "prd": "vue-cli-service serve --port 3000 --mode production"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",

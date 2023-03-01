@@ -3,6 +3,7 @@ type ResponseData = {
 	data: any;
 	message: string;
 	status: string;
+	statusText: string;
 };
 
 // interface PrivacyPolicy {

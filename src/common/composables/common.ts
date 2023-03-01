@@ -1,10 +1,11 @@
 import {
 	EmpInfo,
-	//	UserInfo,
+	UserInfo,
 	MyNumber,
 	AccInfo,
 	RegChgInfo,
 	DeptInfo,
+	CertificationInfo,
 } from '@/common/types/common';
 import { reactive } from 'vue';
 
@@ -69,6 +70,22 @@ export default () => {
 	// 	regNo: '',
 	// 	company: '',
 	// });
+	const userInfo: UserInfo = reactive({
+		sysCd: '00',
+		userId: null,
+		userNm: null,
+		userHpNo: null,
+		companyNm: null,
+		deptNm: null,
+		certificationNumber: null,
+		password: null,
+		passwordConfirm: null,
+	});
+
+	const certificationInfo: CertificationInfo = reactive({
+		...userInfo,
+		certificationNumber: null,
+	});
 
 	const deptInfo: DeptInfo = reactive({
 		deptNum: -1,
@@ -100,6 +117,7 @@ export default () => {
 		...regChgInfo,
 	});
 
+	const resCodeRegex = /COM_\d{3}_200/;
 	/*
   accSeq: number;
   accDate: DateType;
@@ -121,10 +139,12 @@ export default () => {
 	});
 
 	return {
+		resCodeRegex,
 		stringToNumber,
+		certificationInfo,
 		inputNumber,
 		sortJSON,
-		//	userInfo,
+		userInfo,
 		deptInfo,
 		empInfo,
 		regChgInfo,

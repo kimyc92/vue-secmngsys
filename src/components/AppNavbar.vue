@@ -2,7 +2,18 @@
 	<div class="appNavbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand ps-3" href="/"><strong>SUHYUP</strong></a>
+				<a class="navbar-brand m-1" href="/"
+					><h6 class="m-0">
+						<strong>SUHYUP </strong>
+						<span class="badge bg-primary me-2">beta</span>
+					</h6></a
+				>
+
+				<!-- <h6 class="navbar-brand m-0">
+					<a href="/"><strong>SUHYUP </strong></a
+					><span class="badge bg-secondary">beta</span>
+				</h6> -->
+
 				<button
 					class="navbar-toggler"
 					type="button"

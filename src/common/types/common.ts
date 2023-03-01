@@ -16,6 +16,22 @@ interface AppModal {
 	content: string;
 }
 
+interface UserInfo {
+	sysCd: string;
+	userId: string;
+	userNm: string;
+	userHpNo: string;
+	companyNm: string;
+	deptNm: string;
+	certificationNumber: string;
+	password: string;
+	passwordConfirm: string;
+}
+
+interface CertificationInfo extends UserInfo {
+	certificationNumber: string;
+}
+
 // interface UserInfo extends PrivacyPolicy {
 // 	userNum: number;
 // 	userNm: string;
@@ -73,7 +89,8 @@ export {
 	MyNumber,
 	AppModal,
 	CustomInstance,
-	//	UserInfo,
+	CertificationInfo,
+	UserInfo,
 	DeptInfo,
 	EmpInfo,
 	RegChgInfo,
