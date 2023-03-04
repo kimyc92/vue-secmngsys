@@ -4,6 +4,7 @@ const LoadingVal = reactive({
 	isLoading: false,
 	fullPage: true,
 	canCancel: true,
+	whenCancelled: false,
 	useSlot: false,
 	loader: 'spinner',
 	color: '#007bff',

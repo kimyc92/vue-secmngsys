@@ -108,8 +108,8 @@ button {
 .container {
 	flex: 1;
 	position: relative;
-	padding-left: 10% !important;
-	padding-right: 10% !important;
+	padding-left: 5% !important;
+	padding-right: 5% !important;
 }
 /*
 @media (min-width: 1200px) {
@@ -122,14 +122,14 @@ button {
   }
 }
 */
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
 	.container,
 	.container-lg,
 	.container-md,
 	.container-sm {
 		max-width: 960px;
 	}
-}
+} */
 /*
 @media (min-width: 768px) {
   .container,

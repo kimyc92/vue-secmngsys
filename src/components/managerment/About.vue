@@ -118,11 +118,18 @@
 						기능 연계 - Expected
 					</div>
 					<div class="col-12 mt-2">
-						<b>* 2023.11 :</b> Sh그룹웨어 조직도 연계 및 회원 로그인 기능 추가 -
+						<b>* 2023.10 :</b> 관리자 페이지 VueJS 프로젝트 구축 - Expected
+					</div>
+					<div class="col-12 mt-2">
+						<b>* 2023.11 :</b> 관리자 페이지 Sh그룹웨어 조직도 연계 기능 추가 -
 						Expected
 					</div>
 					<div class="col-12 mt-2">
-						<b>* 2023.12 :</b> 결제 기능 추가 - Expected
+						<b>* 2023.11 :</b> OAuth 2.0 기반 SSO 로그인 MSA 프로젝트 구축 -
+						Expected
+					</div>
+					<div class="col-12 mt-2">
+						<b>* 2023.12 :</b> 결재 기능 추가 - Expected
 					</div>
 					<div class="col-12 mt-2">
 						<b>* 2024.01 :</b> Official Version Security Management System OPEN
@@ -135,7 +142,7 @@
 					role="tabpanel"
 					aria-labelledby="list-settings-list"
 				>
-					<b>* Don't Say NO</b>
+					<b>* NO COMMENT</b>
 				</div>
 			</div>
 		</div>
