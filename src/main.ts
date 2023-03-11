@@ -18,7 +18,7 @@ const app = createApp(App);
 
 //Axios
 app.provide('$axios', axios);
-
+app.provide;
 // Font Awesome
 app.component('fa-icon', FontAwesomeIcon);
 app.component('fa-layers', FontAwesomeLayers);

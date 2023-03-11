@@ -51,7 +51,7 @@
 				<div class="col-sm-6">
 					<input
 						type="text"
-						v-model="userInfo.companyNm"
+						v-model="userInfo.deptNm"
 						class="input-group form-control"
 						disabled
 					/>
@@ -66,6 +66,7 @@
 						class="input-group form-control"
 						@input="handleInputUserHpNo"
 						v-model="userInfo.userHpNo"
+						v-bind:disabled="isSmsSends"
 					/>
 				</div>
 				<div class="col-sm-3">
@@ -108,21 +109,58 @@
 			<div class="row mt-3">
 				<div class="col-sm-3 required align-self-center">새 비밀번호</div>
 				<div class="col-sm-9">
-					<input
-						type="text"
-						class="input-group form-control"
-						v-model="userInfo.password"
-					/>
+					<div class="input-group">
+						<input
+							v-if="!isEye"
+							type="password"
+							class="input-group form-control"
+							v-model="userInfo.password"
+						/>
+						<input
+							v-else
+							type="text"
+							class="input-group form-control"
+							v-model="userInfo.password"
+						/>
+						<button
+							@click="handleClickEye"
+							type="button"
+							class="btn btn-outline-secondary eye"
+							tabindex="-1"
+						>
+							<fa-icon icon="fa-solid fa-eye" />
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="row mt-3">
 				<div class="col-sm-3 required align-self-center">비밀번호 확인</div>
 				<div class="col-sm-9">
-					<input
-						type="text"
-						class="input-group form-control"
-						v-model="userInfo.passwordConfirm"
-					/>
+					<div class="input-group">
+						<input
+							v-if="!isEye"
+							type="password"
+							class="input-group form-control"
+							v-model="userInfo.passwordConfirm"
+						/>
+						<input
+							v-else
+							type="text"
+							class="input-group form-control"
+							v-model="userInfo.passwordConfirm"
+						/>
+						<button
+							@click="handleClickEye"
+							type="button"
+							class="btn btn-outline-secondary eye"
+							tabindex="-1"
+						>
+							<fa-icon icon="fa-solid fa-eye" />
+						</button>
+					</div>
+					<!-- <div class="eyes">
+						<i class="fas fa-eye"></i>
+					</div> -->
 				</div>
 			</div>
 			<div class="row mt-3">
@@ -172,15 +210,18 @@ export default defineComponent({
 		const isSmsSends = ref(false); // SMS 발송 여부
 		const isSmsConfirms = ref(false); // SMS 인증번호 확인 여부
 		const isCompleted = ref(false); // 완료
+		const isEye = ref(false); // 비밀번호 보이기 버튼
 
 		const handleClickUserAuth = async () => {
 			if (!userInfo.userId || userInfo.sysCd === '00') {
 				modalAlert('경고', '대상시스템과 아이디를 입력하세요.');
 			} else {
 				const res = await retrieveUserConfirm(userInfo);
+
 				userInfo.userNm = res.data.data[0].userNm;
 				userInfo.companyNm = res.data.data[0].companyNm;
 				userInfo.deptNm = res.data.data[0].deptNm;
+
 				isUserConfirm.value = true;
 			}
 		};
@@ -204,8 +245,10 @@ export default defineComponent({
 			if (!userInfo.certificationNumber) {
 				modalAlert('경고', '인증번호를 입력하세요.');
 			} else {
-				await retrieveSmsConfirms(userInfo);
-				isSmsConfirms.value = true;
+				const res = await retrieveSmsConfirms(userInfo);
+				if (res.data.code.match(resCodeRegex)) {
+					isSmsConfirms.value = true;
+				}
 			}
 		};
 
@@ -224,6 +267,11 @@ export default defineComponent({
 
 		const handleInputUserHpNo = () =>
 			(userInfo.userHpNo = stringToNumber(userInfo.userHpNo));
+
+		const handleClickEye = () => {
+			isEye.value = !isEye.value;
+			console.log(isEye.value);
+		};
 
 		const timerStart = () => {
 			// init
@@ -267,12 +315,14 @@ export default defineComponent({
 			handleClickSmsSends,
 			handleClickSmsConfirms,
 			handleClickPasswordChange,
+			handleClickEye,
 			isUserConfirm,
 			isSmsSends,
 			isSmsConfirms,
 			timerStr,
 			timerStart,
 			isCompleted,
+			isEye,
 		};
 	},
 });
@@ -282,5 +332,9 @@ export default defineComponent({
 .required:after {
 	content: ' *';
 	color: deeppink;
+}
+
+.eye {
+	border: 1px solid #ced4da;
 }
 </style>

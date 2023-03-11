@@ -117,6 +117,7 @@
 						<b>* 2023.07 :</b> 개인정보 관리 솔루션(privacy-i) 패스워드 변경
 						기능 연계 - Expected
 					</div>
+					<!--
 					<div class="col-12 mt-2">
 						<b>* 2023.10 :</b> 관리자 페이지 VueJS 프로젝트 구축 - Expected
 					</div>
@@ -135,6 +136,7 @@
 						<b>* 2024.01 :</b> Official Version Security Management System OPEN
 						- Expected
 					</div>
+					-->
 				</div>
 				<div
 					class="tab-pane fade"

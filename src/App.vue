@@ -1,5 +1,6 @@
 <template>
 	<div class="app">
+		<!-- <vue-title title="보안관리시스템"></vue-title> -->
 		<!--
     <div>
       <span v-if="loading">Loading product{{ products }}</span>
@@ -45,6 +46,12 @@ import { modalState } from '@/components/modal/customModal/composables/customMod
 import { LoadingVal } from '@/common/composables/loading';
 export default defineComponent({
 	name: 'app',
+	metaInfo: {
+		// if no subcomponents specify a metaInfo.title, this title will be used
+		title: 'Default Title',
+		// all titles will be injected into this template
+		//titleTemplate: '%s | My Awesome Webapp',
+	},
 	// setup -> beboreCreate 이전에 호출
 	components: {
 		AppNavbar,

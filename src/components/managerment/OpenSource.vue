@@ -18,6 +18,11 @@ export default defineComponent({
 	setup() {
 		const datas = ref([
 			{
+				name: 'NGINX',
+				address: 'https://nginx.org ',
+				license: 'BSD 2-Clause',
+			},
+			{
 				name: 'Vue3 Loading Overlay',
 				address: 'https://github.com/moyoujun/vue3-loading-overlay',
 				license: 'MIT License',

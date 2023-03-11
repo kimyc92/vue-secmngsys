@@ -1,7 +1,9 @@
 import { CustomInstance } from '@/common/types/common';
 import { logOnDev } from '@/common/composables/logOnDev';
 import { customModal } from '@/components/modal/customModal/composables/customModal';
+import { ResponseData } from '@/api/types/reponse';
 import common from '@/common/composables/common';
+import { LoadingVal } from '@/common/composables/loading';
 import axios, {
 	AxiosError,
 	AxiosRequestConfig,
@@ -15,6 +17,7 @@ const { resCodeRegex } = common();
 const onRequest = (
 	config: InternalAxiosRequestConfig,
 ): InternalAxiosRequestConfig => {
+	LoadingVal.isLoading = true;
 	const { method, url } = config;
 	logOnDev(`[API] ${method?.toLocaleUpperCase()} ${url} [REQUEST OK]`);
 	return config;
@@ -27,14 +30,34 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 		modalAlert('경고', data.data[0].content);
 	}
 	logOnDev(`[API] ${method?.toLocaleUpperCase()} ${url} [RESPONSE ${status}]`);
+	LoadingVal.isLoading = false;
 	return response;
 };
 
 const onError = (error: AxiosError | Error): Promise<AxiosError> => {
 	if (axios.isAxiosError(error)) {
-		//const { message } = error;
+		const { message } = error;
 		const { method, url } = error.config as AxiosRequestConfig;
-		const { status, data } = error.response as AxiosResponse;
+		let status: string | unknown = null;
+		let data: ResponseData = null;
+		if (message === 'Network Error') {
+			status = '';
+			data = {
+				code: '',
+				data: [
+					{
+						content: '관리자에게 문의하세요.',
+					},
+				],
+				message: 'Network Error',
+				status: 'Network Error',
+				statusText: '',
+			};
+		} else {
+			status = error.response.status as unknown as AxiosResponse;
+			data = error.response.data as ResponseData;
+		}
+
 		logOnDev(
 			`[API] ${method?.toLocaleUpperCase()} ${url} [RESPONSE ${status}]`,
 		);
@@ -47,6 +70,7 @@ const onError = (error: AxiosError | Error): Promise<AxiosError> => {
 	} else {
 		throw new Error('different error than axios');
 	}
+	LoadingVal.isLoading = false;
 	return Promise.reject(error);
 };
 //CustomInstance

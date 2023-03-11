@@ -28,7 +28,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
 						<a class="nav-link ps-3" aria-current="page" href="/password"
-							><fa-icon icon="fa-solid fa-unlock-keyhole" /> 패스워드 변경</a
+							><fa-icon icon="fa-solid fa-unlock-keyhole" /> 비밀번호 변경</a
 						>
 						<a class="nav-link ps-3" href="/setting"
 							><fa-icon icon="fa-solid fa-gears" /> 관리</a
